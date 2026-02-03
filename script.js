@@ -638,7 +638,7 @@ function showFinalMessage() {
                 
                 <!-- Victory Text -->
                 <div class="victory-text">
-                    <h1 class="victory-title">You and Surya are now a Valentine pair!</h1>
+                    <h1 class="victory-title">You and Ish are now locked in for life!</h1>
                     <p class="quest-unlock">✨ New quest unlocked: A Beautiful Life Together 💘</p>
                 </div>
             </div>
@@ -664,24 +664,27 @@ async function handleBagClick() {
     
     try {
         console.log('Showing bag dialogue...');
-        await showDialogue('BAG: Chatpati Baatein 🌶️ | Ma ka bhosda AAAG 🔥 | Gehra Pyaar 💖');
+        // Original text with emojis
+        const bagText = 'BAG: Chatpati Baatein 🌶️ | Ma ka bhosda AAAG 🔥 | Gehra Pyaar 💖';
+        await showDialogue(bagText);
         
-        console.log('Waiting for user to read...');
+        console.log('Dialogue shown, waiting...');
         // Wait to let user read the message
         await new Promise(resolve => setTimeout(resolve, 3000));
         
-        console.log('Returning to prompt...');
+        console.log('Setting prompt...');
         // Return to prompt
         setDialogue('What will ISH do?');
         
-        console.log('Bag action complete!');
+        console.log('Bag complete!');
     } catch (error) {
-        console.error('Error in handleBagClick:', error);
+        console.error('BAG ERROR:', error);
         setDialogue('What will ISH do?');
     } finally {
-        // Always unlock buttons, even if there's an error
+        // Always unlock buttons
+        console.log('Unlocking buttons...');
         gameState.buttonsLocked = false;
-        console.log('Buttons unlocked');
+        console.log('Buttons should be unlocked now');
     }
 }
 
@@ -784,8 +787,18 @@ async function initGame() {
     console.log('Pokémon-Style Battle System Initialized!');
     console.log('Game State:', gameState);
     
-    // Setup menu buttons
+    // Lock buttons during initialization
+    gameState.buttonsLocked = true;
+    
+    // Setup menu buttons (but they'll be locked)
     showMainMenu();
+    
+    // Disable all buttons during opening sequence
+    const buttons = getMenuButtons();
+    buttons.forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = '0.6';
+    });
     
     // Show opening dialogue with typewriter effect (wait for it to complete)
     await showDialogue('A wild Valentine appeared!');
@@ -795,7 +808,18 @@ async function initGame() {
     
     setDialogue('What will ISH do?');
     
-    console.log('Battle system ready!');
+    // Now enable all buttons
+    buttons.forEach(btn => {
+        if (!btn.classList.contains('disabled')) {
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    });
+    
+    // Unlock buttons
+    gameState.buttonsLocked = false;
+    
+    console.log('Battle system ready! Buttons enabled.');
 }
 
 /**
