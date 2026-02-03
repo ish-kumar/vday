@@ -654,17 +654,35 @@ function showFinalMessage() {
  * Handle Bag button click
  */
 async function handleBagClick() {
-    if (gameState.buttonsLocked) return;
+    if (gameState.buttonsLocked) {
+        console.log('Bag click ignored - buttons locked');
+        return;
+    }
+    
+    console.log('Bag clicked - starting...');
     gameState.buttonsLocked = true;
     
-    await showDialogue('BAG: Chatpati Baatein 🌶️ | Ma ka bhosda AAAG 🔥 | Gehra Pyaar 💖');
-    
-    // Wait to let user read the message
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    
-    // Return to prompt
-    setDialogue('What will ISH do?');
-    gameState.buttonsLocked = false;
+    try {
+        console.log('Showing bag dialogue...');
+        await showDialogue('BAG: Chatpati Baatein 🌶️ | Ma ka bhosda AAAG 🔥 | Gehra Pyaar 💖');
+        
+        console.log('Waiting for user to read...');
+        // Wait to let user read the message
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        
+        console.log('Returning to prompt...');
+        // Return to prompt
+        setDialogue('What will ISH do?');
+        
+        console.log('Bag action complete!');
+    } catch (error) {
+        console.error('Error in handleBagClick:', error);
+        setDialogue('What will ISH do?');
+    } finally {
+        // Always unlock buttons, even if there's an error
+        gameState.buttonsLocked = false;
+        console.log('Buttons unlocked');
+    }
 }
 
 /**
