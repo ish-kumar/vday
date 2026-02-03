@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Battle ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgm" loop preload="auto">
+        <source src="assets/bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Controls -->
+    <button id="music-toggle" class="music-toggle" title="Mute/Unmute">
+        🔊
+    </button>
+
+    <!-- Start Button Overlay -->
+    <div id="start-overlay" class="start-overlay">
+        <button id="start-button" class="start-button">
+            <span class="start-text">Start 💕</span>
+            <span class="start-subtext">Click to begin your Valentine adventure!</span>
+        </button>
+    </div>
+
+    <div class="game-container">
+        <!-- Battle Area -->
+        <div class="battle-area">
+            <!-- Background Decorations -->
+            <div class="background-clouds">
+                <div class="bg-cloud">☁️</div>
+                <div class="bg-cloud">☁️</div>
+                <div class="bg-cloud">☁️</div>
+            </div>
+            
+            <div class="background-hearts">
+                <div class="bg-heart">💕</div>
+                <div class="bg-heart">💖</div>
+                <div class="bg-heart">💗</div>
+                <div class="bg-heart">💘</div>
+                <div class="bg-heart">💝</div>
+            </div>
+            
+            <div class="background-stars">
+                <div class="bg-star">✨</div>
+                <div class="bg-star">⭐</div>
+                <div class="bg-star">✨</div>
+                <div class="bg-star">⭐</div>
+                <div class="bg-star">✨</div>
+                <div class="bg-star">⭐</div>
+            </div>
+            <!-- Enemy Panel (Top-Right) -->
+            <div class="enemy-panel">
+                <div class="info-box enemy-info">
+                    <div class="pokemon-name">SURYA</div>
+                    <div class="level">:L💕</div>
+                    <div class="hp-container">
+                        <div class="hp-label">HP:</div>
+                        <div class="hp-bar">
+                            <div class="hp-fill enemy-hp" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enemy Sprite (Left of Enemy Panel) -->
+            <div class="enemy-sprite-container">
+                <img src="assets/surya.png" alt="Surya" class="sprite enemy-sprite" id="opponent-avatar">
+            </div>
+
+            <!-- Player Sprite (Right of Player Panel) -->
+            <div class="player-sprite-container">
+                <img src="assets/ish.png" alt="Ish" class="sprite player-sprite" id="player-avatar">
+            </div>
+
+            <!-- Player Panel (Bottom-Left) -->
+            <div class="player-panel">
+                <div class="info-box player-info">
+                    <div class="pokemon-name">ISH</div>
+                    <div class="level">:L💕</div>
+                    <div class="hp-container">
+                        <div class="hp-label">HP:</div>
+                        <div class="hp-bar">
+                            <div class="hp-fill player-hp" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="hp-text">
+                        <span id="player-hp-current">100</span> / <span id="player-hp-max">100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UI Container (Dialogue + Menu) -->
+        <div class="ui-container">
+            <!-- Dialogue Box (Bottom-Left) -->
+            <div class="dialogue-box">
+                <div class="dialogue-text" id="battle-message">
+                    What will ISH do?
+                </div>
+            </div>
+
+            <!-- Battle Menu (Bottom-Right) -->
+            <div class="battle-menu">
+                <button class="menu-button">FIGHT</button>
+                <button class="menu-button">BAG</button>
+                <button class="menu-button">RUN</button>
+                <button class="menu-button empty-slot">♥</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
