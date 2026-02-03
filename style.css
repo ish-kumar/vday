@@ -284,7 +284,34 @@ body {
     20% { transform: translate(2px, 1px) rotate(1deg); }
     30% { transform: translate(-2px, 1px) rotate(-1deg); }
     40% { transform: translate(2px, -1px) rotate(1deg); }
-    50% { transform: translate(-2px, -1px) rotate(-1deg); }
+}
+
+/* Move towards enemy animation */
+@keyframes moveTowardsEnemy {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-180px, -150px);
+    }
+}
+
+@keyframes moveTowardsEnemyTablet {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-140px, -110px);
+    }
+}
+
+@keyframes moveTowardsEnemyMobile {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-90px, -75px);
+    }
     60% { transform: translate(2px, 1px) rotate(1deg); }
     70% { transform: translate(-2px, 1px) rotate(-1deg); }
     80% { transform: translate(2px, -1px) rotate(1deg); }
@@ -530,6 +557,22 @@ body {
 
 .nervous-shake {
     animation: nervousShake 1s ease-in-out;
+}
+
+.moving-forward {
+    animation: moveTowardsEnemy 1.5s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .moving-forward {
+        animation: moveTowardsEnemyTablet 1.5s ease-out forwards;
+    }
+}
+
+@media (max-width: 480px) {
+    .moving-forward {
+        animation: moveTowardsEnemyMobile 1.2s ease-out forwards;
+    }
 }
 
 /* Fade to Black Effect */
