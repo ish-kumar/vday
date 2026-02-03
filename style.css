@@ -9,10 +9,22 @@ button, a, .sprite, .info-box {
     transition: all 0.3s ease;
 }
 
+/* Mobile-specific fixes */
+html {
+    height: -webkit-fill-available;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 100%; /* Prevent zoom on orientation change */
+    }
+}
+
 body {
     font-family: 'Press Start 2P', 'Courier New', monospace;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
+    min-height: -webkit-fill-available; /* iOS Safari fix */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +32,7 @@ body {
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    -webkit-text-size-adjust: 100%; /* Prevent text scaling on iOS */
 }
 
 .game-container {
