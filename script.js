@@ -657,10 +657,10 @@ async function handleBagClick() {
     if (gameState.buttonsLocked) return;
     gameState.buttonsLocked = true;
     
-    await showDialogue('BAG: Rose 🌹 | Chocolate 🍫 | Love Letter 💌');
+    await showDialogue('BAG: Chatpati Baatein 🌶️ | Ma ka bhosda AAAG 🔥 | Gehra Pyaar 💖');
     
     // Wait to let user read the message
-    await new Promise(resolve => setTimeout(resolve, 2500));
+    await new Promise(resolve => setTimeout(resolve, 3000));
     
     // Return to prompt
     setDialogue('What will ISH do?');
